@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    img {
+      max-width: 70%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    input[type="range"] {
+      width: 80%;
+    }
+    .slider-label {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Image display area -->
+  <img id="imageDisplay" src="quantiles_1.png" alt="Slide Image">
+  <!-- Slider to control image display -->
+  <input type="range" id="imageSlider" min="0" max="29" value="0">
+  <div class="slider-label" id="sliderLabel">Alpha</div>
+
+  <script>
+    // Array of image filenames corresponding to alpha values
+    const images = [
+    "integrals_alpha_0.50.png", "integrals_alpha_0.53.png", "integrals_alpha_0.56.png",
+    "integrals_alpha_0.59.png", "integrals_alpha_0.62.png", "integrals_alpha_0.65.png", 
+    "integrals_alpha_0.68.png", "integrals_alpha_0.71.png", "integrals_alpha_0.74.png",
+    "integrals_alpha_0.78.png", "integrals_alpha_0.81.png", "integrals_alpha_0.84.png",
+    "integrals_alpha_0.87.png", "integrals_alpha_0.90.png", "integrals_alpha_0.93.png",
+    "integrals_alpha_0.96.png", "integrals_alpha_0.99.png", "integrals_alpha_1.02.png",
+    "integrals_alpha_1.05.png", "integrals_alpha_1.08.png", "integrals_alpha_1.11.png",
+    "integrals_alpha_1.14.png", "integrals_alpha_1.17.png", "integrals_alpha_1.20.png",
+    "integrals_alpha_1.23.png", "integrals_alpha_1.26.png", "integrals_alpha_1.29.png",
+    "integrals_alpha_1.32.png", "integrals_alpha_1.35.png", "integrals_alpha_1.38.png",
+    "integrals_alpha_1.41.png", "integrals_alpha_1.44.png", "integrals_alpha_1.47.png",
+    "integrals_alpha_1.50.png", "integrals_alpha_1.53.png", "integrals_alpha_1.56.png",
+    "integrals_alpha_1.59.png", "integrals_alpha_1.62.png", "integrals_alpha_1.65.png",
+    "integrals_alpha_1.68.png", "integrals_alpha_1.71.png", "integrals_alpha_1.74.png",
+    "integrals_alpha_1.77.png", "integrals_alpha_1.80.png", "integrals_alpha_1.83.png",
+    "integrals_alpha_1.86.png", "integrals_alpha_1.89.png", "integrals_alpha_1.92.png",
+    "integrals_alpha_1.95.png", "integrals_alpha_1.98.png", "integrals_alpha_2.00.png"
+    ];
+
+
+    // Array of alpha values from 0.5 to 2 with 50 steps
+    const alphas = Array.from({ length: 30 }, (_, i) => (0.5 + i * 0.05).toFixed(2));
+
+    // Elements
+    const imageDisplay = document.getElementById("imageDisplay");
+    const imageSlider = document.getElementById("imageSlider");
+    const sliderLabel = document.getElementById("sliderLabel");
+
+    // Update image and label based on slider value
+    function updateImage() {
+      const index = imageSlider.value;
+      imageDisplay.src = images[index];
+    }
+
+    // Event listener for slider
+    imageSlider.addEventListener("input", updateImage);
+  </script>
+</body>
+</html>
